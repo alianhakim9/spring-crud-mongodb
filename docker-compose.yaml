@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  database:
+    image: "mongo:5.0"
+    container_name: "spring_crud_mongo"
+    environment:
+      - MONGO_INITDB_DATABASE=spring-data-mongo
+      - MONGO_INITDB_ROOT_USERNAME=spring-crud-mongo
+      - MONGO_INITDB_ROOT_PASSWORD=strongrootpassword
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
